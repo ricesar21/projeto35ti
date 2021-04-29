@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req,res) => {
-    const filmes = await Filme.destroy(req.body, {
+    const filmes = await Filme.destroy({
         where: {
             id: req.params.id
         }

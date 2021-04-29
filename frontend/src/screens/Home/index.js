@@ -40,8 +40,8 @@ const Home = () => {
                 <hr class="container-fluid divisor p-2 bg-secundary mt-0 mb-0" />
 
                 <div class="container-fluid" className={classes.fourSection}>
-                    <h4>Aplicativo Desktop</h4>
-                    <h5>Baixe nosso aplicativo Desktop para um maior conforto!</h5>
+                    <h4>Aplicativo Mobile</h4>
+                    <h5>Baixe nosso aplicativo Mobile para obter vantagens!</h5>
                 </div>
 
                 <hr class="container-fluid divisor p-2 bg-secundary mt-0 mb-0" />
