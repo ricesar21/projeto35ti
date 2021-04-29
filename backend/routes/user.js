@@ -5,7 +5,7 @@ const sha256 = require('js-sha256');
 const verifyJWT = require('../middlewares/auth');
 
 
-router.get('/', verifyJWT,  async (req, res) => {
+router.get('/', /* verifyJWT ,*/  async (req, res) => {
     const users = await User.findAll({
         attributes: ['email', 'nomeCompleto', 'usuario']
     });
