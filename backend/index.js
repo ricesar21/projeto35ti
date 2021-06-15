@@ -8,8 +8,6 @@ const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const filmesRouter = require('./routes/filmes');
 
-
-
 app.use(bodyParser.json());
 app.use(cors());
 

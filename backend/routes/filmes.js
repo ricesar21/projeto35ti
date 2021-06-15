@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
             id: req.params.id
         }
     });
-    res.status(200).json(filme);
+    res.status(200).json(filmes);
 });
 
 router.delete('/:id', async (req,res) => {
@@ -61,7 +61,7 @@ router.delete('/:id', async (req,res) => {
             id: req.params.id
         }
     });
-     res.status(200).json(filme)
+     res.status(200).json(filmes)
 });
 
 module.exports = router
