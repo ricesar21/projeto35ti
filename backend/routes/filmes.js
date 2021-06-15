@@ -34,10 +34,9 @@ router.get('/categoria/:categoria', async (req,res) => {
     const filmes = await Filme.findAll({
         where: {
             categoria: {
-                [Op.or]: `${req.params.categoria}%`
+                [Op.like]: `%${req.params.categoria}%`
             }
         }
-
     });
     res.status(200).json(filmes);
 });
