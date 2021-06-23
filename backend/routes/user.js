@@ -40,13 +40,11 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const users = await User.update({
-        usuario: req.body.usuario,
-        nomeCompleto: req.body.nomeCompleto,
-        email: req.body.email,
-        senha: sha256(req.body.senha + "767"),
-        permissao: 'user'
+        where:{
+            id:req.params.id
+        }
     });
-    res.status(200).json(users);
+    res.status(200).json("Atualizado com sucesso");
 });
 
 
