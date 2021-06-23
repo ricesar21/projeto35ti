@@ -45,15 +45,7 @@ router.put('/:id', async (req, res) => {
         }
                    
     });
-    res.status(200).json({
-        auth: true,           
-        token: token,           
-        id: result[0].dataValues.id,           
-        nomeCompleto: result[0].dataValues.nomeCompleto,           
-        usuario: result[0].dataValues.usuario,           
-        email: result[0].dataValues.email,
-        
-    })
+    res.status(200).json(users)
 });
 
 
