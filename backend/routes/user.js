@@ -23,4 +23,31 @@ router.post('/', async (req, res) => {
     res.status(201).json(users);
 });
 
+router.get('/', async (req, res) => {
+    const users = await User.findAll();
+    res.status(200).json(users)
+});
+
+router.get('/:id', async (req, res) => {
+    const users = await User.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    res.status(200).json(users)
+
+});
+
+router.put('/:id', async (req, res) => {
+    const users = await User.update({
+        usuario: req.body.usuario,
+        nomeCompleto: req.body.nomeCompleto,
+        email: req.body.email,
+        senha: sha256(req.body.senha + "767"),
+        permissao: 'user'
+    });
+    res.status(200).json(users);
+});
+
+
 module.exports = router
