@@ -43,8 +43,17 @@ router.put('/:id', async (req, res) => {
         where: {
             id: req.params.id
         }
+                   
     });
-    res.status(200).json('Atualizado com sucesso!')
+    res.status(200).json({
+        auth: true,           
+        token: token,           
+        id: result[0].dataValues.id,           
+        nomeCompleto: result[0].dataValues.nomeCompleto,           
+        usuario: result[0].dataValues.usuario,           
+        email: result[0].dataValues.email,
+        
+    })
 });
 
 
