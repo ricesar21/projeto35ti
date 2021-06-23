@@ -38,23 +38,28 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const result = await User.findAll({
-        
-    });
+    const {
+        nomeCompleto,
+        usuario,
+        email
+    } = req.body;
+
+    const {id} = req.params.id;
 
     const users = await User.update(req.body, {
         where: {
-            id: req.params.id
+            id
         }
-
     });
+
+    const user = {
+        id,
+        nomeCompleto,
+        usuario,
+        email
+    }
     
-    res.status(200).json({
-        id: result[0].dataValues.id,
-        nomeCompleto: result[0].dataValues.nomeCompleto,
-        usuario: result[0].dataValues.usuario,
-        email: result[0].dataValues.email
-    })
+    res.status(200).json(user)
 });
 
 
