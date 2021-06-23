@@ -38,27 +38,22 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const {
-        nomeCompleto,
-        usuario,
-        email
-    } = req.body;
 
-    const {id} = req.params;
-    const users = await User.update(req.body, {
+    const user = {
+        nomeCompleto: req.body.nomeCompleto,
+        usuario: req.body.usuario,
+        email: req.body.email,
+        senha: sha256(req.body.senha + "767"),
+    }
+
+    const { id } = req.params;
+    const users = await User.update(user, {
         where: {
             id
         }
     });
 
-    const user = {
-        id,
-        nomeCompleto,
-        usuario,
-        email
-    }
-    
-    res.status(200).json(user)
+    res.status(200).json({ id, ...user })
 });
 
 
