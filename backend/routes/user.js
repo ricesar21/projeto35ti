@@ -44,8 +44,7 @@ router.put('/:id', async (req, res) => {
         email
     } = req.body;
 
-    const {id} = req.params.id;
-
+    const {id} = req.params;
     const users = await User.update(req.body, {
         where: {
             id
