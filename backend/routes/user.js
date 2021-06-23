@@ -39,12 +39,12 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const users = await User.update({
-        where:{
-            id:req.params.id
+    const users = await User.update(req.body, {
+        where: {
+            id: req.params.id
         }
     });
-    res.status(200).json("Atualizado com sucesso");
+    res.status(200).json('Atualizado com sucesso!')
 });
 
 
