@@ -5,7 +5,12 @@ const sha256 = require('js-sha256');
 
 router.get('/', /* verifyJWT ,*/  async (req, res) => {
     const users = await User.findAll({
-        attributes: ['email', 'nomeCompleto', 'usuario']
+        attributes: [
+            'id',
+            'email',
+            'nomeCompleto',
+            'usuario'
+        ]
     });
 
     res.status(200).json(users);
