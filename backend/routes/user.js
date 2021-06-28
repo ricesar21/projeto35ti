@@ -9,7 +9,8 @@ router.get('/', /* verifyJWT ,*/  async (req, res) => {
             'id',
             'email',
             'nomeCompleto',
-            'usuario'
+            'usuario',
+            'permissao'
         ]
     });
 
