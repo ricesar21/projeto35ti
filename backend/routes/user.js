@@ -3,10 +3,15 @@ const router = express.Router();
 const { User } = require('../models');
 const sha256 = require('js-sha256');
 
-
 router.get('/', /* verifyJWT ,*/  async (req, res) => {
     const users = await User.findAll({
-        attributes: ['email', 'nomeCompleto', 'usuario']
+        attributes: [
+            'id',
+            'email',
+            'nomeCompleto',
+            'usuario',
+            'permissao'
+        ]
     });
 
     res.status(200).json(users);
@@ -39,9 +44,18 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const users = await User.update(req.body, {
+
+    const user = {
+        nomeCompleto: req.body.nomeCompleto,
+        usuario: req.body.usuario,
+        email: req.body.email,
+        senha: sha256(req.body.senha + "767"),
+    }
+
+    const { id } = req.params;
+    const users = await User.update(user, {
         where: {
-            id: req.params.id
+            id
         }
 
     });
