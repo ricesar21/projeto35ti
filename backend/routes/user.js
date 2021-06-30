@@ -43,6 +43,15 @@ router.get('/:id', async (req, res) => {
 
 });
 
+router.delete('/:id', async (req,res) => {
+    const users = await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+     res.status(200).json(users)
+});
+
 router.put('/:id', async (req, res) => {
 
     const user = {
@@ -51,23 +60,15 @@ router.put('/:id', async (req, res) => {
         email: req.body.email,
         senha: sha256(req.body.senha + "767"),
     }
-
     const { id } = req.params;
+
     const users = await User.update(user, {
         where: {
             id
         }
-
     });
-    res.status(200).json({
-        auth: true,
-        token: token,
-        id: result[0].dataValues.id,
-        nomeCompleto: result[0].dataValues.nomeCompleto,
-        usuario: result[0].dataValues.usuario,
-        email: result[0].dataValues.email, 
-    })
-});
 
+    res.status(200).json({ id, ...user })
+});
 
 module.exports = router
