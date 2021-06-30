@@ -43,6 +43,15 @@ router.get('/:id', async (req, res) => {
 
 });
 
+router.delete('/:id', async (req,res) => {
+    const users = await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+     res.status(200).json(users)
+});
+
 router.put('/:id', async (req, res) => {
 
     const user = {
